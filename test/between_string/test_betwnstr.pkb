@@ -7,33 +7,33 @@ create or replace package body test_betwnstr as
 
   procedure zero_start_position is
   begin
-    ut.expect( betwnstr( '1234567', 0, 5 ) ).to_( equal('12345') );
+    ut.expect( betwnstr( '1234567', 0, 5 ) ).to_equal('12345');
   end;
 
   procedure big_end_position is
   begin
-    ut.expect( betwnstr( '1234567', 0, 500 ) ).to_( equal('1234567') );
+    ut.expect( betwnstr( '1234567', 0, 500 ) ).to_equal('1234567');
   end;
 
   procedure null_string is
   begin
-    ut.expect( betwnstr( null, 2, 5 ) ).to_( be_null() );
+    ut.expect( betwnstr( null, 2, 5 ) ).to_be_null();
   end;
 
   procedure bad_params is
   begin
-    ut.expect( betwnstr( '1234567', 'a', 'b' ) ).to_( be_null() );
+    ut.expect( betwnstr( '1234567', 'a', 'b' ) ).to_be_null();
   end;
 
   procedure bad_test
   is
   begin
-    ut.expect( betwnstr( '1234567', 0, 500 ) ).to_( equal('1') );
+    ut.expect( betwnstr( '1234567', 0, 500 ) ).to_equal('1');
   end;
 
   procedure disabled_test is
   begin
-    ut.expect( betwnstr( null, null, null) ).not_to( be_null );
+    ut.expect( betwnstr( null, null, null) ).to_be_not_null;
   end;
 
 end;
